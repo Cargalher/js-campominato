@@ -11,8 +11,8 @@ function randomIntFromInterval(min, max) { // min and max included
 var randomNumber = [];
 console.log(randomNumber);
 
-//we use a for loop to generate 16 random numbers
-for(var i=0; i<16; i++){
+//we use a while loop to generate 16 random numbers
+while(randomNumber.length<15){
   
   //we store the random number (calling the function) in a variable numberToInsert
   var numberToInsert = randomIntFromInterval(1, 100);

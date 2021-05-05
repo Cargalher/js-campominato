@@ -1,28 +1,67 @@
+// Campominato
+
 //function to generate two random numbers 
 
-function randomIntFromInterval(min, max) { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function randomNumber(min, max) { // min and max included 
+    return Math.floor(Math.random()*(max - min + 1) + min);
   }
 
-//we call the function in our case is; randomIntFromInterval(1, 100) to have random numbers between 1 and 100;
-//console.log(randomIntFromInterval(1, 100));
+//we call the function in our case is; randomNumber(1, 100) to have random numbers between 1 and 100;
+//console.log(randomNumber(1, 100));
 
 //we create a variable array to store the random numbers
-var randomNumber = [];
-console.log(randomNumber);
+// Our variables
+var diff = Number (prompt('Insert level 0/1/2'));
+var list_bomb = [];
+var bomb;
+var num_max ;
+var score = 0;
 
-//we use a while loop to generate 16 random numbers
-while(randomNumber.length<15){
-  
-  //we store the random number (calling the function) in a variable numberToInsert
-  var numberToInsert = randomIntFromInterval(1, 100);
-  
-  //we use a if statement to insert numberToInsert in the array randomNumber, only if is not already contained in the array
-  if(randomNumber.includes(numberToInsert) === false) {
-    //if the condition is false we push the number in the array
-    randomNumber.push(numberToInsert);
-  }
-  //console.log(randomNumber);
+var list = [];
+
+if (diff == 0){
+  num_max = 100;
+}else if(diff == 1){                    /*  <======BONUS PART  */
+  num_max = 80;
+}else if(diff == 2){
+  num_max = 50;
 }
 
-console.log(randomNumber);
+var chance = num_max- 16;
+
+//we use a while loop to generate 16 random numbers
+while(list_bomb.length < 16){
+  bomb = randomNumber(1, num_max);
+
+    if(!list_bomb.includes(bomb)){
+      list_bomb.push(bomb);
+    }
+
+}
+console.log(list_bomb);
+
+
+ do{
+   var user_num = Number (prompt('Insert a Number'));
+
+   if(list_bomb.includes(user_num)){
+     alert('You Lose!Total score: ' + score);
+   }else if(list.includes(user_num)){
+    alert('Number already inserted!');
+   }else if(user_num < 1 || user_num > num_max){
+   }else{
+    list.push(user_num);
+    score = score + 1;
+   }
+   
+ }while(list.length < chance && !list_bomb.includes(user_num));
+
+ if(list.length == chance){
+  alert('You win!');
+}
+
+
+
+
+console.log(list);
+console.log(score);
